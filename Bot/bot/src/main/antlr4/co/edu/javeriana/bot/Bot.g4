@@ -31,22 +31,22 @@ sentence: movUp | movDown | movRight | movLeft;
 movUp: UP expression SEMICOLON {
 	System.out.println("ARRIBA ");
 	System.out.println($expression.value);
-	bot.up(Integer.parseInt($expression.value.toString()));
+	bot.up((Integer)$expression.value);
 };
 movDown:DOWN expression SEMICOLON{
 	System.out.println("ABAJO ");
 	System.out.println($expression.value);
-	bot.down(Integer.parseInt($expression.value.toString()));
+	bot.down((Integer)$expression.value);
 };
 movRight: RIGHT expression SEMICOLON{
 	System.out.println("DERECHA ");
 	System.out.println($expression.value);
-	bot.right(Integer.parseInt($expression.value.toString()));
+	bot.right((Integer)$expression.value);
 };
 movLeft: LEFT expression SEMICOLON{
 	System.out.println("IZQUIERDA ");
 	System.out.println($expression.value);
-	bot.left(Integer.parseInt($expression.value.toString()));
+	bot.left((Integer)$expression.value);
 };
 
 expression returns [Object value]: 

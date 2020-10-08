@@ -291,7 +291,7 @@ public class BotParser extends Parser {
 
 				System.out.println("ARRIBA ");
 				System.out.println(((MovUpContext)_localctx).expression.value);
-				bot.up(Integer.parseInt(((MovUpContext)_localctx).expression.value.toString()));
+				bot.up((Integer)((MovUpContext)_localctx).expression.value);
 
 			}
 		}
@@ -347,7 +347,7 @@ public class BotParser extends Parser {
 
 				System.out.println("ABAJO ");
 				System.out.println(((MovDownContext)_localctx).expression.value);
-				bot.down(Integer.parseInt(((MovDownContext)_localctx).expression.value.toString()));
+				bot.down((Integer)((MovDownContext)_localctx).expression.value);
 
 			}
 		}
@@ -403,7 +403,7 @@ public class BotParser extends Parser {
 
 				System.out.println("DERECHA ");
 				System.out.println(((MovRightContext)_localctx).expression.value);
-				bot.right(Integer.parseInt(((MovRightContext)_localctx).expression.value.toString()));
+				bot.right((Integer)((MovRightContext)_localctx).expression.value);
 
 			}
 		}
@@ -459,7 +459,7 @@ public class BotParser extends Parser {
 
 				System.out.println("IZQUIERDA ");
 				System.out.println(((MovLeftContext)_localctx).expression.value);
-				bot.left(Integer.parseInt(((MovLeftContext)_localctx).expression.value.toString()));
+				bot.left((Integer)((MovLeftContext)_localctx).expression.value);
 
 			}
 		}
