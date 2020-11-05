@@ -1,4 +1,12 @@
-> 6;
+> 1;
+P;
+> 4;
+D;
 < 2;
 V 5;
 ^ 3;
+
+'mivariable <- @F;
+
+
+$ mivariable;

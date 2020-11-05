@@ -23,11 +23,13 @@ public BotParser(TokenStream input, Bot bot) {
 }
 
 
-program:
-	sentence*;
+program: sentence*;
 
-sentence: movUp | movDown | movRight | movLeft;
+sentence: movUp | movDown | movRight | movLeft | pick | drop  | defvar | asignvar
+		| twicevar | conditionif | conditionifelse | conditionwhile| readscreen 
+		|printscreen |function;
 
+//Sentencias del robot
 movUp: UP expression SEMICOLON {
 	System.out.println("ARRIBA ");
 	System.out.println($expression.value);
@@ -49,6 +51,67 @@ movLeft: LEFT expression SEMICOLON{
 	bot.left((Integer)$expression.value);
 };
 
+pick: PICK SEMICOLON{
+	bot.pick();
+};
+drop: DROP SEMICOLON{
+	bot.drop();
+};
+
+//Sentencia de variables
+defvar: VAR ID SEMICOLON{
+	 symbolTable.put($ID.text,0); 
+};
+
+asignvar: ID ASSIGNVAR  dato SEMICOLON
+{
+	symbolTable.put($ID.text,$dato.value);
+	System.out.println($dato.value);
+};
+
+twicevar: VAR ID  ASSIGNVAR  dato SEMICOLON
+{
+	symbolTable.put($ID.text,$dato.value);
+	System.out.println($dato.value);
+};
+
+//Sentencia de tipos de datos
+dato returns [Object value]: NUMBER 
+| BOOL TRUE  { $value = "True";} 
+| BOOL FALSE { $value = "False";} 
+| STRING ID STRING { $value =  $ID.text;} ;
+
+//DEFINIR NUMERO CON DECIMALES
+//number returns [Object value]:;
+//booltrue returns [Object value]: BOOL TRUE;
+//boolfalse returns [Object value]: BOOL FALSE;
+//DEFINIR STRING 
+//string returns [Object value]:STRING ID STRING { $value = $ID.text;} ;
+
+//Sentencia de condicionales
+conditionif:IF condition ASSIGNFUN sentence* END SEMICOLON ;
+conditionifelse:IF condition ASSIGNFUN sentence* ELSE sentence* END SEMICOLON ;
+
+//Sentencia de while
+conditionwhile: WHILE condition ASSIGNFUN sentence* END SEMICOLON;
+
+
+
+
+//DEFINIR POSIBLES CONDICIONES
+condition:;
+
+//Impresion y lectura de pantalla
+readscreen:READ SEMICOLON;
+printscreen:WRITE datoprint  SEMICOLON;
+
+datoprint returns [Object value]:
+ID { $value =  symbolTable.get($ID.text);} ;
+
+function:DEFINE ID PAR_OPEN  VAR params PAR_CLOSE ASSIGNFUN sentence* END SEMICOLON ;
+
+params:;
+
 expression returns [Object value]: 
 		NUMBER{$value = Integer.parseInt($NUMBER.text);}; 
 
@@ -67,25 +130,23 @@ DROP: 'D';
 
 
 //-------------VARIABLES
-ID: [a-zA-Z_][a-zA-Z0-9_]*;
-ASSIGN: '<-';
+ASSIGNVAR: '<-';
 SEMICOLON: ';';
 VAR:'\'';
-STRING:'"';
-BOOL:'@';
-//DECLARAR VARIABLE
-//ASIGNAR VARIABLE
-//ASIGNACION DECLARACION DE VARIABLES
+
 
 
 //--------------TIPOS DE DATOS
-//STRING
+
 NUMBER: [0-9]+; //COMPLETAR DECIMAL
-//BOOL
+STRING:'"';
+BOOL:'@';
+TRUE:'T';
+FALSE:'F';
 
 //----------------CONDICIONALES
 IF: 'if';
-ASIGNIF:'->';
+ASSIGNFUN:'->';
 ELSE: 'else';
 END: 'end';
 
@@ -94,8 +155,8 @@ END: 'end';
 WHILE:'while';
 
 //----------IMPRESION Y LECTURA
-//LECTURA
-//ESCRITURA
+READ:'?';
+WRITE:'$';
 
 //---------------EXPRESIONES ARIMETICAS
 PLUS: '+';
@@ -124,6 +185,8 @@ PAR_OPEN:'(';
 PAR_CLOSE:')';
 //FUNCION
 
+//-------------VARIABLES
+ID: [a-zA-Z_][a-zA-Z0-9_]*;
 
 //----------------------INVOCACION DE FUNCIONES
 //INVOCACION
