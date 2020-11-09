@@ -5,6 +5,7 @@ package co.edu.javeriana.bot;
 import org.jpavlich.bot.*;
 import java.util.Map;
 import java.util.HashMap;
+import co.edu.javeriana.bot.ast.*;
 
 
 import org.antlr.v4.runtime.tree.ParseTreeListener;
@@ -34,6 +35,166 @@ public interface BotListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitSentence(BotParser.SentenceContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BotParser#pick}.
+	 * @param ctx the parse tree
+	 */
+	void enterPick(BotParser.PickContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BotParser#pick}.
+	 * @param ctx the parse tree
+	 */
+	void exitPick(BotParser.PickContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BotParser#drop}.
+	 * @param ctx the parse tree
+	 */
+	void enterDrop(BotParser.DropContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BotParser#drop}.
+	 * @param ctx the parse tree
+	 */
+	void exitDrop(BotParser.DropContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BotParser#defvar}.
+	 * @param ctx the parse tree
+	 */
+	void enterDefvar(BotParser.DefvarContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BotParser#defvar}.
+	 * @param ctx the parse tree
+	 */
+	void exitDefvar(BotParser.DefvarContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BotParser#assignvar}.
+	 * @param ctx the parse tree
+	 */
+	void enterAssignvar(BotParser.AssignvarContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BotParser#assignvar}.
+	 * @param ctx the parse tree
+	 */
+	void exitAssignvar(BotParser.AssignvarContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BotParser#conditionif}.
+	 * @param ctx the parse tree
+	 */
+	void enterConditionif(BotParser.ConditionifContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BotParser#conditionif}.
+	 * @param ctx the parse tree
+	 */
+	void exitConditionif(BotParser.ConditionifContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BotParser#conditionwhile}.
+	 * @param ctx the parse tree
+	 */
+	void enterConditionwhile(BotParser.ConditionwhileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BotParser#conditionwhile}.
+	 * @param ctx the parse tree
+	 */
+	void exitConditionwhile(BotParser.ConditionwhileContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BotParser#read}.
+	 * @param ctx the parse tree
+	 */
+	void enterRead(BotParser.ReadContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BotParser#read}.
+	 * @param ctx the parse tree
+	 */
+	void exitRead(BotParser.ReadContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BotParser#print}.
+	 * @param ctx the parse tree
+	 */
+	void enterPrint(BotParser.PrintContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BotParser#print}.
+	 * @param ctx the parse tree
+	 */
+	void exitPrint(BotParser.PrintContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BotParser#function}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction(BotParser.FunctionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BotParser#function}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction(BotParser.FunctionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BotParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpression(BotParser.ExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BotParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpression(BotParser.ExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BotParser#andOr}.
+	 * @param ctx the parse tree
+	 */
+	void enterAndOr(BotParser.AndOrContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BotParser#andOr}.
+	 * @param ctx the parse tree
+	 */
+	void exitAndOr(BotParser.AndOrContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BotParser#comparison}.
+	 * @param ctx the parse tree
+	 */
+	void enterComparison(BotParser.ComparisonContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BotParser#comparison}.
+	 * @param ctx the parse tree
+	 */
+	void exitComparison(BotParser.ComparisonContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BotParser#addition}.
+	 * @param ctx the parse tree
+	 */
+	void enterAddition(BotParser.AdditionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BotParser#addition}.
+	 * @param ctx the parse tree
+	 */
+	void exitAddition(BotParser.AdditionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BotParser#factor}.
+	 * @param ctx the parse tree
+	 */
+	void enterFactor(BotParser.FactorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BotParser#factor}.
+	 * @param ctx the parse tree
+	 */
+	void exitFactor(BotParser.FactorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BotParser#term}.
+	 * @param ctx the parse tree
+	 */
+	void enterTerm(BotParser.TermContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BotParser#term}.
+	 * @param ctx the parse tree
+	 */
+	void exitTerm(BotParser.TermContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BotParser#executeFun}.
+	 * @param ctx the parse tree
+	 */
+	void enterExecuteFun(BotParser.ExecuteFunContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BotParser#executeFun}.
+	 * @param ctx the parse tree
+	 */
+	void exitExecuteFun(BotParser.ExecuteFunContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link BotParser#movUp}.
 	 * @param ctx the parse tree
@@ -74,164 +235,4 @@ public interface BotListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMovLeft(BotParser.MovLeftContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link BotParser#pick}.
-	 * @param ctx the parse tree
-	 */
-	void enterPick(BotParser.PickContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BotParser#pick}.
-	 * @param ctx the parse tree
-	 */
-	void exitPick(BotParser.PickContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link BotParser#drop}.
-	 * @param ctx the parse tree
-	 */
-	void enterDrop(BotParser.DropContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BotParser#drop}.
-	 * @param ctx the parse tree
-	 */
-	void exitDrop(BotParser.DropContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link BotParser#defvar}.
-	 * @param ctx the parse tree
-	 */
-	void enterDefvar(BotParser.DefvarContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BotParser#defvar}.
-	 * @param ctx the parse tree
-	 */
-	void exitDefvar(BotParser.DefvarContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link BotParser#asignvar}.
-	 * @param ctx the parse tree
-	 */
-	void enterAsignvar(BotParser.AsignvarContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BotParser#asignvar}.
-	 * @param ctx the parse tree
-	 */
-	void exitAsignvar(BotParser.AsignvarContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link BotParser#twicevar}.
-	 * @param ctx the parse tree
-	 */
-	void enterTwicevar(BotParser.TwicevarContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BotParser#twicevar}.
-	 * @param ctx the parse tree
-	 */
-	void exitTwicevar(BotParser.TwicevarContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link BotParser#dato}.
-	 * @param ctx the parse tree
-	 */
-	void enterDato(BotParser.DatoContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BotParser#dato}.
-	 * @param ctx the parse tree
-	 */
-	void exitDato(BotParser.DatoContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link BotParser#conditionif}.
-	 * @param ctx the parse tree
-	 */
-	void enterConditionif(BotParser.ConditionifContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BotParser#conditionif}.
-	 * @param ctx the parse tree
-	 */
-	void exitConditionif(BotParser.ConditionifContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link BotParser#conditionifelse}.
-	 * @param ctx the parse tree
-	 */
-	void enterConditionifelse(BotParser.ConditionifelseContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BotParser#conditionifelse}.
-	 * @param ctx the parse tree
-	 */
-	void exitConditionifelse(BotParser.ConditionifelseContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link BotParser#conditionwhile}.
-	 * @param ctx the parse tree
-	 */
-	void enterConditionwhile(BotParser.ConditionwhileContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BotParser#conditionwhile}.
-	 * @param ctx the parse tree
-	 */
-	void exitConditionwhile(BotParser.ConditionwhileContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link BotParser#condition}.
-	 * @param ctx the parse tree
-	 */
-	void enterCondition(BotParser.ConditionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BotParser#condition}.
-	 * @param ctx the parse tree
-	 */
-	void exitCondition(BotParser.ConditionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link BotParser#readscreen}.
-	 * @param ctx the parse tree
-	 */
-	void enterReadscreen(BotParser.ReadscreenContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BotParser#readscreen}.
-	 * @param ctx the parse tree
-	 */
-	void exitReadscreen(BotParser.ReadscreenContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link BotParser#printscreen}.
-	 * @param ctx the parse tree
-	 */
-	void enterPrintscreen(BotParser.PrintscreenContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BotParser#printscreen}.
-	 * @param ctx the parse tree
-	 */
-	void exitPrintscreen(BotParser.PrintscreenContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link BotParser#datoprint}.
-	 * @param ctx the parse tree
-	 */
-	void enterDatoprint(BotParser.DatoprintContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BotParser#datoprint}.
-	 * @param ctx the parse tree
-	 */
-	void exitDatoprint(BotParser.DatoprintContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link BotParser#function}.
-	 * @param ctx the parse tree
-	 */
-	void enterFunction(BotParser.FunctionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BotParser#function}.
-	 * @param ctx the parse tree
-	 */
-	void exitFunction(BotParser.FunctionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link BotParser#params}.
-	 * @param ctx the parse tree
-	 */
-	void enterParams(BotParser.ParamsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BotParser#params}.
-	 * @param ctx the parse tree
-	 */
-	void exitParams(BotParser.ParamsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link BotParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterExpression(BotParser.ExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BotParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitExpression(BotParser.ExpressionContext ctx);
 }

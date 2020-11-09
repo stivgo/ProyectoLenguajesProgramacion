@@ -1,12 +1,18 @@
-> 1;
+> 2;
 P;
-> 4;
+> 3;
 D;
-< 2;
-V 5;
-^ 3;
+'miVariable;
+'miVariable1 <- 1;
+$ miVariable1 = 1;
+$ miVariable1 < 6;
+while (miVariable1 < 6) ->
+	$miVariable1;
+	miVariable1<- miVariable1 +1;
+	$miVariable1;
+end;
+$ miVariable1;
+miVariable <- 432.43;
+$ "Buenas las tenga" + miVariable1 + "AJAJAJAJ"+2+"HOLA"+miVariable;
 
-'mivariable <- @F;
 
-
-$ mivariable;
