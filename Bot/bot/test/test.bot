@@ -15,4 +15,12 @@ $ miVariable1;
 miVariable <- 432.43;
 $ "Buenas las tenga" + miVariable1 + "AJAJAJAJ"+2+"HOLA"+miVariable;
 
+define diagonal ('hola,'bool) ->
+	$hola;
+	$bool;
+	return "John el jijijiji";
+end;
+
+$ diagonal("Buenas las tenga",@T);
+
 

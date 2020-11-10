@@ -40,6 +40,7 @@ sentence returns [ASTNode node]:
 				
 			  pick {$node = $pick.node;}
 			 | drop {$node = $drop.node;}
+			 | executeFun {$node = $executeFun.node;}
 			 | defvar {$node = $defvar.node;}
 			 | assignvar {$node = $assignvar.node;}
 			 | conditionif {$node = $conditionif.node;}
@@ -50,7 +51,9 @@ sentence returns [ASTNode node]:
 			| movUp {$node = $movUp.node;}
 			 | movDown {$node = $movDown.node;}
 			 | movRight {$node = $movRight.node;}
-			 | movLeft {$node = $movLeft.node;};
+			 | movLeft {$node = $movLeft.node;}
+			 
+			 ;
 
 
 
@@ -120,7 +123,7 @@ function returns [ASTNode node]:
 				List<String> params = new ArrayList<String>();
 				List<ASTNode> body = new ArrayList<ASTNode>();
 			}  (VAR t2=ID{params.add($t2.text);})?
-			(COMMA t3 = ID{params.add($t3.text);})*
+			(COMMA  VAR t3 = ID{params.add($t3.text);})*
 			 PAR_CLOSE ASSIGNFUN (s1=sentence{body.add($s1.node);})*
 			 (RETURN andOr{
 			 	returnFun= true;
@@ -185,7 +188,7 @@ executeFun returns [ASTNode node]:
 	}
 	ID PAR_OPEN (p1 = expression{arguments.add($p1.node);})?
 	(COMMA p2 = expression{arguments.add($p2.node);})*
-	PAR_CLOSE
+	PAR_CLOSE SEMICOLON
 	{
 		$node = new ExecuteFun($ID.text, arguments);	
 	};
